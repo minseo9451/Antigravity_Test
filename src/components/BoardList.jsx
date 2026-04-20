@@ -44,14 +44,14 @@ const BoardList = ({ onSelect, onNew }) => {
           </tr>
         </thead>
         <tbody>
-          {posts.map(post => (
+          {Array.isArray(posts) ? posts.map(post => (
             <tr key={post.id} onClick={() => onSelect(post.id)} style={{cursor: 'pointer'}}>
               <td><span className="badge">{post.id}</span></td>
               <td>{post.title}</td>
               <td>{post.author}</td>
               <td style={{color: 'var(--text-muted)', fontSize: '0.9rem'}}>{post.created_at}</td>
             </tr>
-          ))}
+          )) : null}
         </tbody>
       </table>
       {posts.length === 0 && <div style={{textAlign: 'center', padding: '2rem', color: 'var(--text-muted)'}}>게시글이 없습니다.</div>}
